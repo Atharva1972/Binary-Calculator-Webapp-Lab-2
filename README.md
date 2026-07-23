@@ -1,13 +1,13 @@
 # Binary Calculator Webapp
 
-A Spring Boot web application and REST API for performing binary arithmetic and bitwise operations, built for SOFE 3980U (Software Testing and Quality Assurance) — Lab 2.
+A Spring Boot web application and REST API for performing binary arithmetic and bitwise operations, built for SOFE 3980U (Software Testing and Quality Assurance) - Lab 2.
 
 This project extends the `Binary` class from [Lab 1](https://github.com/Atharva1972/Binary-Calculator-Lab-1) into a full web application, exposing the same logic through both a browser-based calculator UI and a REST API.
 
 ## Features
 
-- **Web calculator UI** (`/`) — an interactive binary calculator supporting Add (`+`), Multiply (`*`), AND (`&`), and OR (`|`).
-- **REST API** — each operation is available as both a plain-text endpoint and a JSON endpoint:
+- **Web calculator UI** (`/`) - an interactive binary calculator supporting Add (`+`), Multiply (`*`), AND (`&`), and OR (`|`).
+- **REST API** - each operation is available as both a plain-text endpoint and a JSON endpoint:
   | Operation | Plain text | JSON |
   |---|---|---|
   | Add | `GET /add?operand1=111&operand2=1010` | `GET /add_json?operand1=111&operand2=1010` |
@@ -15,9 +15,9 @@ This project extends the `Binary` class from [Lab 1](https://github.com/Atharva1
   | AND | `GET /and?operand1=111&operand2=1010` | `GET /and_json?operand1=111&operand2=1010` |
   | OR | `GET /or?operand1=111&operand2=1010` | `GET /or_json?operand1=111&operand2=1010` |
 - **Demo endpoints** (from the earlier part of the lab):
-  - `GET /hello?name=YourName` — Thymeleaf-rendered greeting.
-  - `GET /helloAPI?name=YourName` — plain-text REST greeting.
-  - `GET /emailAPI?fname=John&lname=Doe` — JSON suggested-email generator.
+  - `GET /hello?name=YourName` - Thymeleaf-rendered greeting.
+  - `GET /helloAPI?name=YourName` - plain-text REST greeting.
+  - `GET /emailAPI?fname=John&lname=Doe` - JSON suggested-email generator.
 
 ## Tech stack
 
@@ -71,5 +71,5 @@ src/test/java/com/ontariotechu/sofe3980U/
 
 ## Author
 
-Atharva Rajadhyaksha — Student ID 101041016
-Course: [SOFE 3980U — Software Testing and Quality Assurance](https://learn.ontariotechu.ca/courses/39683)
+Atharva Rajadhyaksha - Student ID 101041016
+Course: [Software Testing and Quality Assurance](https://learn.ontariotechu.ca/courses/39683)
