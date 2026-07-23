@@ -76,4 +76,59 @@ public class BinaryAPIControllerTest {
 			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value(1111))
 			.andExpect(MockMvcResultMatchers.jsonPath("$.operator").value("or"));
     }
+
+    @Test
+    public void multiplyEqualLength() throws Exception {
+        this.mvc.perform(get("/multiply_json").param("operand1","101").param("operand2","110"))
+            .andExpect(status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value(101))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value(110))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value(11110))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operator").value("multiply"));
+    }
+	@Test
+    public void multiplyZero() throws Exception {
+        this.mvc.perform(get("/multiply_json").param("operand1","0").param("operand2","1111"))
+            .andExpect(status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value(0))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value(1111))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value(0))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operator").value("multiply"));
+    }
+	@Test
+    public void andEqualLength() throws Exception {
+        this.mvc.perform(get("/and_json").param("operand1","1100").param("operand2","1010"))
+            .andExpect(status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value(1100))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value(1010))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value(1000))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operator").value("and"));
+    }
+	@Test
+    public void andZero() throws Exception {
+        this.mvc.perform(get("/and_json").param("operand1","0").param("operand2","1111"))
+            .andExpect(status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value(0))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value(1111))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value(0))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operator").value("and"));
+    }
+	@Test
+    public void orEqualLength() throws Exception {
+        this.mvc.perform(get("/or_json").param("operand1","1010").param("operand2","1101"))
+            .andExpect(status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value(1010))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value(1101))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value(1111))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operator").value("or"));
+    }
+	@Test
+    public void orZero() throws Exception {
+        this.mvc.perform(get("/or_json").param("operand1","0").param("operand2","1010"))
+            .andExpect(status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value(0))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value(1010))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value(1010))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operator").value("or"));
+    }
 }

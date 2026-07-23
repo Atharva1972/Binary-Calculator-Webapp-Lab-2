@@ -81,4 +81,53 @@ public class BinaryControllerTest {
 			.andExpect(model().attribute("result", "1111"))
 			.andExpect(model().attribute("operand1", "111"));
     }
+
+    @Test
+	public void postParameterMultiplyEqualLength() throws Exception {
+        this.mvc.perform(post("/").param("operand1","101").param("operator","*").param("operand2","110"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("result"))
+			.andExpect(model().attribute("result", "11110"))
+			.andExpect(model().attribute("operand1", "101"));
+    }
+	@Test
+	public void postParameterMultiplyZero() throws Exception {
+        this.mvc.perform(post("/").param("operand1","0").param("operator","*").param("operand2","1111"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("result"))
+			.andExpect(model().attribute("result", "0"))
+			.andExpect(model().attribute("operand1", "0"));
+    }
+	@Test
+	public void postParameterAndEqualLength() throws Exception {
+        this.mvc.perform(post("/").param("operand1","1100").param("operator","&").param("operand2","1010"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("result"))
+			.andExpect(model().attribute("result", "1000"))
+			.andExpect(model().attribute("operand1", "1100"));
+    }
+	@Test
+	public void postParameterAndZero() throws Exception {
+        this.mvc.perform(post("/").param("operand1","0").param("operator","&").param("operand2","1111"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("result"))
+			.andExpect(model().attribute("result", "0"))
+			.andExpect(model().attribute("operand1", "0"));
+    }
+	@Test
+	public void postParameterOrEqualLength() throws Exception {
+        this.mvc.perform(post("/").param("operand1","1010").param("operator","|").param("operand2","1101"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("result"))
+			.andExpect(model().attribute("result", "1111"))
+			.andExpect(model().attribute("operand1", "1010"));
+    }
+	@Test
+	public void postParameterOrZero() throws Exception {
+        this.mvc.perform(post("/").param("operand1","0").param("operator","|").param("operand2","1010"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("result"))
+			.andExpect(model().attribute("result", "1010"))
+			.andExpect(model().attribute("operand1", "0"));
+    }
 }
